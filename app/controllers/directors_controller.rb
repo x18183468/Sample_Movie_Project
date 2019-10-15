@@ -3,7 +3,7 @@ class DirectorsController < ApplicationController
 
   # GET /directors
   # GET /directors.json
-  def index
+  def index #shows the list of directors of the currently selected movie
     @movie = Movie.find(params[:movie_id])
     @director = @movie.director
   end
