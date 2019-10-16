@@ -5,9 +5,17 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+
     @best = Movie.where("release==?","2019")
     @best.each { |movie|
       puts  movie.name
+     }
+
+     @join = Movie.joins("INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo' ");
+     @join.each   { |mov|
+        puts mov.name
+        puts mov.rating
+        puts mov
      }
   end
 

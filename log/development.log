@@ -1866,3 +1866,206 @@ Processing by MoviesController#index as HTML
 Completed 200 OK in 6169ms (Views: 6013.8ms | ActiveRecord: 6.5ms | Allocations: 1252333)
 
 
+Started GET "/" for ::1 at 2019-10-16 14:19:08 +0100
+  [1m[35m (9.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 1.6ms | Allocations: 9107)
+
+
+  
+ActiveRecord::ConfigurationError (Can't join 'Movie' to association named 'directors'; perhaps you misspelled it?):
+  
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:26:53 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = ? Russo[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms | Allocations: 6900)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: near "Russo": syntax error):
+  
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:27:16 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = Russo[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.6ms | Allocations: 7157)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: Russo):
+  
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:28:55 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:16
+  Rendered movies/index.html.erb within layouts/application (Duration: 31.3ms | Allocations: 1274)
+Completed 200 OK in 4932ms (Views: 4918.7ms | ActiveRecord: 1.5ms | Allocations: 1248228)
+
+
+Started GET "/" for ::1 at 2019-10-16 14:30:00 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.5ms | Allocations: 9412)
+
+
+  
+NoMethodError (undefined method `movie_id' for #<Movie:0x0000000008468720>):
+  
+app/controllers/movies_controller.rb:18:in `block in index'
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:30:27 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.4ms | Allocations: 9321)
+
+
+  
+NoMethodError (undefined method `firstname' for #<Movie:0x00000000104a2940>):
+  
+app/controllers/movies_controller.rb:18:in `block in index'
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:30:51 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:16
+  Rendered movies/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 961)
+Completed 200 OK in 56ms (Views: 42.4ms | ActiveRecord: 1.6ms | Allocations: 17884)
+
+
+Started GET "/" for ::1 at 2019-10-16 14:35:39 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" OUTER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.4ms | Allocations: 7212)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: RIGHT and FULL OUTER JOINs are not currently supported):
+  
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:39:49 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.4ms | Allocations: 9324)
+
+
+  
+NoMethodError (undefined method `firstname' for #<Movie:0x000000000d87ac78>):
+  
+app/controllers/movies_controller.rb:18:in `block in index'
+app/controllers/movies_controller.rb:15:in `index'
+Started GET "/" for ::1 at 2019-10-16 14:42:32 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:16
+  Rendered movies/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 960)
+Completed 200 OK in 55ms (Views: 41.6ms | ActiveRecord: 1.7ms | Allocations: 17858)
+
+
+Started GET "/movies/2" for ::1 at 2019-10-16 14:43:17 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/movies_controller.rb:79:in `set_movie'
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 2]]
+  ↳ app/views/movies/show.html.erb:16
+  Rendered movies/show.html.erb within layouts/application (Duration: 74.7ms | Allocations: 5517)
+Completed 200 OK in 171ms (Views: 133.6ms | ActiveRecord: 0.9ms | Allocations: 17237)
+
+
+Started GET "/movies/2/directors" for ::1 at 2019-10-16 14:43:25 +0100
+Processing by DirectorsController#index as HTML
+  Parameters: {"movie_id"=>"2"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/directors_controller.rb:7:in `index'
+  [1m[36mDirector Load (0.2ms)[0m  [1m[34mSELECT "directors".* FROM "directors" WHERE "directors"."movie_id" = ? LIMIT ?[0m  [["movie_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/directors_controller.rb:8:in `index'
+  Rendering directors/index.html.erb within layouts/application
+  Rendered directors/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 432)
+Completed 200 OK in 125ms (Views: 56.0ms | ActiveRecord: 0.9ms | Allocations: 14544)
+
+
+Started GET "/movies/2" for ::1 at 2019-10-16 14:43:27 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/movies_controller.rb:79:in `set_movie'
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 2]]
+  ↳ app/views/movies/show.html.erb:16
+  Rendered movies/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 824)
+Completed 200 OK in 43ms (Views: 40.4ms | ActiveRecord: 0.4ms | Allocations: 11859)
+
+
+Started GET "/movies" for ::1 at 2019-10-16 14:43:29 +0100
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (release=='2019')[0m
+  ↳ app/controllers/movies_controller.rb:10:in `index'
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo'[0m
+  ↳ app/controllers/movies_controller.rb:15:in `index'
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/views/movies/index.html.erb:16
+  Rendered movies/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 882)
+Completed 200 OK in 47ms (Views: 39.5ms | ActiveRecord: 0.7ms | Allocations: 12600)
+
+
+Started GET "/movies/2" for ::1 at 2019-10-16 14:43:44 +0100
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/movies_controller.rb:79:in `set_movie'
+  Rendering movies/show.html.erb within layouts/application
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 2]]
+  ↳ app/views/movies/show.html.erb:16
+  Rendered movies/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 813)
+Completed 200 OK in 44ms (Views: 40.9ms | ActiveRecord: 0.4ms | Allocations: 11857)
+
+
