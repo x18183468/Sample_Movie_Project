@@ -6,11 +6,11 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    @best = Movie.where("release==?","2019")
+    @best = Movie.where("release==?","2019")  #SQL Query to retrieve movie with release date equal to 2019
     @best.each { |movie|
       puts  movie.name
      }
-
+        #SQL JOIN to retrieve movie with director name equal to Russo
      @join = Movie.joins("INNER JOIN directors ON directors.movie_id = movies.id AND directors.firstname = 'Russo' ");
      @join.each   { |mov|
         puts mov.name
